@@ -25,7 +25,7 @@ exports.getAllBlog = catchAsync( async(req,res)=>{
 
 
 
-exports.getBlog = catchAsync(async(req,res)=>{
+exports.countComment = catchAsync(async(req,res)=>{
     const blog = await Blog.aggregate([{
     
         $lookup:
