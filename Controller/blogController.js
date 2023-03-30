@@ -24,13 +24,23 @@ exports.getAllBlog = catchAsync( async(req,res)=>{
 
 
 
+
 exports.getBlog = catchAsync(async(req,res)=>{
-    const blog = await Blog.findById(req.params.id).populate('comment')
+    const blog = await Blog.aggregate([{
+    
+        $lookup:
+        {
+          from: "comments",
+          localField: "comment",
+          foreignField: "name",
+          as: "comments_docs"
+        }
+    }])
 
 
+    
     res.status(201).json({
         status:'success',
-        results:blog.length,
         data:{
            blogs:blog
         }
