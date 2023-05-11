@@ -24,7 +24,7 @@ const blogSchema = new mongoose.Schema({
     default:true
   },
   user_id:{
-    type:mongoose.Schema.ObjectId,
+    type:mongoose.Schema.Types.ObjectId,
     ref:'User',
     required:[true,'please belong to field']
   },
